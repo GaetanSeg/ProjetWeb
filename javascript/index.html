@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <title>Le jeux du plus ou moins</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <style>
+  .jumbotron{
+      background: linear-gradient(to bottom, #778899 50%, #000000 100%);
+      margin-top: 30px;
+    }
+    p{
+      color: white;
+    }
+  .jumbotron  h1{
+      color: SkyBlue ;
+    }
+  </style>
+  <nav class="navbar navbar-inverse">
+ <div class="container-fluid">
+   <div class="navbar-header">
+     <a class="navbar-brand" href="#">plus ou moins ?</a>
+   </div>
+   <ul class="nav navbar-nav">
+     <li class="active"><a href="www.google.be">Home</a></li>
+   </ul>
+ </div>
+</nav>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>le jeux du plus ou moins</h1>
+    <form class="form-inline" onsubmit="return checkResult(this)" method="get">
+        <input id="number" class="form-control" type="number" name="number">
+        <input type="submit" name="validate" class="btn btn-warning" value=" Envoyer !">
+    </form>
+    <p>Choisir le chiffres souhaité et cliquer sur envoyer !</p>
+  </div>
+</div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
