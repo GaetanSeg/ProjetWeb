@@ -7,5 +7,4 @@ function myFile() {
   };
 
   reader.readAsText(file);
-
 }
