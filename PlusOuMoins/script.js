@@ -13,11 +13,11 @@ function checkResult(e) {
         return false;
     }
     else if (number < random) {
-        alert("Trop petit :( )");
+        alert("Trop petit :( ");
         return false;
     }
     else {
-        alert("Bravo ! \(^_^)/" );
+        alert("Bravo ! /(^_^)/" );
         var restart = confirm("Voulez-vous rejouer une autre partie ?");
         if (restart)
         {
