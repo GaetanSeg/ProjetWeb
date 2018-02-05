@@ -4,6 +4,7 @@ function myFile() {
 
   reader.onload = function(event) {
     document.getElementById('test').innerHTML = event.target.result;
+    console.log(event.target.result);
   };
 
   reader.readAsText(file);
