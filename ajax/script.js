@@ -1,24 +1,39 @@
-function update(result) {
-    var dt = new Date();
-    $('#refresh').text(dt);
-    $('#updated').text(result.time.updated);
-    $('#euro').text(result.bpi.EUR.rate_float);
-    $('#dollar').text(result.bpi.USD.rate_float);
+//Need jQuery to work
+var updateInterval = 10000; // update interval
+var dt = null; // datetime
 
+function updateTime() {
+    return new Date(); // now
 }
 
-function sendRequest(){
+function updateInfo(data) {
+    var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+    $('#refresh').text(dt);
+    $('#updated').text(data.time.updated);
+    $('#euro').text(data.bpi.EUR.rate + " " + $($.parseHTML(data.bpi.EUR.symbol)).text());
+    $('#dollar').text(data.bpi.USD.rate + " " + $($.parseHTML(data.bpi.USD.symbol)).text());
+    //https://stackoverflow.com/questions/19443345/convert-html-string-into-jquery-object/32631396
+}
 
-      $.ajax({
-              url : "https://api.coindesk.com/v1/bpi/currentprice.json",
-              dataType: 'json',
-              success : function(result) {
-                update(result);
-                setTimeout(function(){sendRequest(); },3000);
-            }
+function update(data) {
+    dt = updateTime();
+    updateInfo(data);
+}
+
+function sendRequest() {
+    $.ajax({
+        url: "https://api.coindesk.com/v1/bpi/currentprice.json", // webservice url (return json)
+        dataType: 'json', // Specify datatype
+        success: // If success
+        function(result){
+            update(result);
+            setTimeout(
+                sendRequest, //this will send request again and again;
+                updateInterval);
+        }
     });
 }
 
 $(document).ready(function() {
-  sendRequest();
+    sendRequest(); // Call sendRequest only once
 });
